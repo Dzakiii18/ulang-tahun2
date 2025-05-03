@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uhuy Ulang Tahun</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: transparent;
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .six {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .profile-container {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+        }
+
+        .profile-picture {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid #fff;
+            object-fit: cover;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hat {
+            position: absolute;
+            width: 80px;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+
+        .wish {
+            margin-top: 20px;
+        }
+
+        .wish-hbd {
+            font-size: 30px;
+            margin: 10px 0;
+            color: #ff6b6b;
+        }
+
+        .seven {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .baloons {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .baloons img {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            animation: floatDownAndDisappear 12s linear infinite;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes floatDownAndDisappear {
+            0% {
+                top: -100px;
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                top: 100%;
+                opacity: 0;
+            }
+        }
+
+        /* Position each balloon with different animation timings */
+        .baloons img:nth-child(1) { left: 5%; animation-delay: 0s; }
+        .baloons img:nth-child(2) { left: 10%; animation-delay: 1s; }
+        .baloons img:nth-child(3) { left: 15%; animation-delay: 2s; }
+        .baloons img:nth-child(4) { left: 20%; animation-delay: 3s; }
+        .baloons img:nth-child(5) { left: 25%; animation-delay: 4s; }
+        .baloons img:nth-child(6) { left: 30%; animation-delay: 0.5s; }
+        .baloons img:nth-child(7) { left: 35%; animation-delay: 1.5s; }
+        .baloons img:nth-child(8) { left: 40%; animation-delay: 2.5s; }
+        .baloons img:nth-child(9) { left: 45%; animation-delay: 3.5s; }
+        .baloons img:nth-child(10) { left: 50%; animation-delay: 4.5s; }
+        .baloons img:nth-child(11) { left: 55%; animation-delay: 0.2s; }
+        .baloons img:nth-child(12) { left: 60%; animation-delay: 1.2s; }
+        .baloons img:nth-child(13) { left: 65%; animation-delay: 2.2s; }
+        .baloons img:nth-child(14) { left: 70%; animation-delay: 3.2s; }
+        .baloons img:nth-child(15) { left: 75%; animation-delay: 4.2s; }
+        .baloons img:nth-child(16) { left: 80%; animation-delay: 0.7s; }
+        .baloons img:nth-child(17) { left: 85%; animation-delay: 1.7s; }
+        .baloons img:nth-child(18) { left: 90%; animation-delay: 2.7s; }
+        .baloons img:nth-child(19) { left: 95%; animation-delay: 3.7s; }
+        .baloons img:nth-child(20) { left: 7%; animation-delay: 4.7s; }
+        .baloons img:nth-child(21) { left: 13%; animation-delay: 0.3s; }
+        .baloons img:nth-child(22) { left: 18%; animation-delay: 1.3s; }
+        .baloons img:nth-child(23) { left: 23%; animation-delay: 2.3s; }
+        .baloons img:nth-child(24) { left: 28%; animation-delay: 3.3s; }
+        .baloons img:nth-child(25) { left: 33%; animation-delay: 4.3s; }
+        .baloons img:nth-child(26) { left: 38%; animation-delay: 0.8s; }
+        .baloons img:nth-child(27) { left: 43%; animation-delay: 1.8s; }
+        .baloons img:nth-child(28) { left: 48%; animation-delay: 2.8s; }
+        .baloons img:nth-child(29) { left: 53%; animation-delay: 3.8s; }
+        .baloons img:nth-child(30) { left: 58%; animation-delay: 4.8s; }
+        .baloons img:nth-child(31) { left: 63%; animation-delay: 0.1s; }
+        .baloons img:nth-child(32) { left: 68%; animation-delay: 1.1s; }
+        .baloons img:nth-child(33) { left: 73%; animation-delay: 2.1s; }
+
+        /* Add some random animation durations to make movement more natural */
+        .baloons img:nth-child(3n) { animation-duration: 11s; }
+        .baloons img:nth-child(3n+1) { animation-duration: 13s; }
+        .baloons img:nth-child(3n+2) { animation-duration: 15s; }
+        
+        /* Override the animation name to use the new one */
+        .baloons img { animation-name: floatDownAndDisappear; }
+
+        /* Add some random sizes for variety */
+        .baloons img:nth-child(5n) { width: 100px; height: 100px; }
+        .baloons img:nth-child(5n+1) { width: 130px; height: 130px; }
+        .baloons img:nth-child(5n+2) { width: 95px; height: 95px; }
+        .baloons img:nth-child(5n+3) { width: 115px; height: 115px; }
+        .baloons img:nth-child(5n+4) { width: 105px; height: 105px; }
+
+        /* Background image container */
+        .bg-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .bg-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Media queries for responsiveness */
+        @media (max-width: 768px) {
+            .profile-picture {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .hat {
+                width: 70px;
+                top: -20px;
+            }
+            
+            .wish-hbd {
+                font-size: 24px;
+            }
+            
+            #wishText {
+                font-size: 16px;
+            }
+            
+            .baloons img {
+                width: 60px;
+                height: 60px;
+            }
+            
+            /* Adjust random sizes for mobile */
+            .baloons img:nth-child(5n) { width: 50px; height: 50px; }
+            .baloons img:nth-child(5n+1) { width: 65px; height: 65px; }
+            .baloons img:nth-child(5n+2) { width: 45px; height: 45px; }
+            .baloons img:nth-child(5n+3) { width: 60px; height: 60px; }
+            .baloons img:nth-child(5n+4) { width: 55px; height: 55px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Image Container -->
+    <div class="bg-container">
+        <img src="backrgound foto.png" alt="Background Image" class="bg-image">
+    </div>
+
+    <div class="container">
+        <div class="six">
+            <div class="wish">
+                <h3 class="wish-hbd">Selamat Ulang Tahun Bot*!</h3>
+            </div>
+
+            <audio id="bgMusic" class="hidden-audio" autoplay loop>
+                <source src="happy-birthday-322777.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+        <div class="seven">
+            <div class="baloons">
+                <!-- Make sure the image path is correct. If the same image is intentionally used for all balloons, ensure it exists -->
+<img src="Fadlan 1.JPG" alt="Balloon Image" />
+                <img src="Fadlan 2.JPG" alt="Balloon Image" />
+                <img src="Fadlan 3.JPG" alt="Balloon Image" />
+                <img src="Fadlan 4.JPG" alt="Balloon Image" />
+                <img src="Fadlan 5.JPG" alt="Balloon Image" />
+                <img src="Fadlan 6.JPG" alt="Balloon Image" />
+                <img src="Fadlan 7.JPG" alt="Balloon Image" />
+                <img src="Fadlan 8.JPG" alt="Balloon Image" />
+                <img src="Fadlan 9.JPG" alt="Balloon Image" />
+                <img src="Fadlan  10.JPG" alt="Balloon Image" />
+                <img src="Fadlan 1.JPG" alt="Balloon Image" />
+                <img src="Fadlan 2.JPG" alt="Balloon Image" />
+                <img src="Fadlan 4.JPG" alt="Balloon Image" />
+                <img src="Fadlan 3.JPG" alt="Balloon Image" />
+                <img src="Fadlan 5.JPG" alt="Balloon Image" />
+                <img src="Fadlan 6.JPG" alt="Balloon Image" />
+                <img src="Fadlan 7.JPG" alt="Balloon Image" />
+                <img src="Fadlan 8.JPG" alt="Balloon Image" />
+                <img src="Fadlan 9.JPG" alt="Balloon Image" />
+                <img src="Fadlan  10.JPG" alt="Balloon Image" />
+                <img src="Fadlan 1.JPG" alt="Balloon Image" />
+                <img src="Fadlan 2.JPG" alt="Balloon Image" />
+                <img src="Fadlan 3.JPG" alt="Balloon Image" />
+                <img src="Fadlan 4.JPG" alt="Balloon Image" />
+                <img src="Fadlan 5.JPG" alt="Balloon Image" />
+                <img src="Fadlan 6.JPG" alt="Balloon Image" />
+                <img src="Fadlan 8.JPG" alt="Balloon Image" />
+                <img src="Fadlan 7.JPG" alt="Balloon Image" />
+                <img src="Fadlan  10.JPG" alt="Balloon Image" />
+                <img src="Fadlan 1.JPG" alt="Balloon Image" />
+                <img src="Fadlan  10.JPG" alt="Balloon Image" />
+                <img src="Fadlan 5.JPG" alt="Balloon Image" />
+                <img src="Fadlan 7.JPG" alt="Balloon Image" />
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for additional effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Function to check if images exist and handle errors
+            function handleImageErrors() {
+                const images = document.querySelectorAll('img');
+                
+                images.forEach(img => {
+                    img.onerror = function() {
+                        // Handle image loading errors
+                        console.log('Error loading image: ' + img.src);
+                        // You could set a fallback image here
+                        // img.src = './img/fallback.jpg';
+                    };
+                });
+            }
+            
+            // Function to dynamically adjust animation properties based on screen size
+            function adjustForScreenSize() {
+                const screenWidth = window.innerWidth;
+                const photos = document.querySelectorAll('.baloons img');
+                
+                // Adjust spacing for different screen sizes
+                photos.forEach((photo, index) => {
+                    // Calculate new left position based on screen width
+                    let newLeftPos;
+                    if (screenWidth <= 480) {
+                        // Mobile devices - spread photos more evenly
+                        newLeftPos = (index % 12) * (100 / 12) + '%';
+                    } else if (screenWidth <= 768) {
+                        // Tablets - medium spacing
+                        newLeftPos = (index % 15) * (100 / 15) + '%';
+                    } else {
+                        // Desktop - keep original spacing
+                        // Original positions are already set in CSS
+                        return;
+                    }
+                    
+                    photo.style.left = newLeftPos;
+                });
+            }
+            
+            // Handle image errors
+            handleImageErrors();
+            
+            // Call once on load
+            adjustForScreenSize();
+            
+            // Adjust whenever window is resized
+            window.addEventListener('resize', adjustForScreenSize);
+        });
+
+        // Pop balloon function
+        function popBalloon(balloon) {
+            try {
+                // Play pop sound
+                const popSound = new Audio('data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAA==');
+                popSound.play().catch(e => console.log('Audio play error:', e));
+                
+                // Get balloon position
+                const balloonRect = balloon.getBoundingClientRect();
+                console.log('Balloon clicked at position:', balloonRect.left, balloonRect.top);
+                
+                // Hide the balloon
+                balloon.classList.add('pop');
+                balloon.style.display = 'none';
+            } catch (error) {
+                console.error('Error in popBalloon function:', error);
+            }
+        }
+
+        // Add click event to balloons
+        document.querySelectorAll('.baloons img').forEach(balloon => {
+            balloon.addEventListener('click', function() {
+                popBalloon(this);
+            });
+        });
+    </script>
+</body>
+</html>

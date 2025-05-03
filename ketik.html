@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cie Ulang Tahun</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 900px;
+            padding: 20px;
+        }
+
+        .message-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+            border: 2px solid #ccc;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .message-text {
+            font-size: 18px;
+            line-height: 1.6;
+            color: rgba(214, 166, 210, 1);
+            min-height: 120px;
+        }
+
+        .cursor {
+            display: inline-block;
+            background-color: #333;
+            width: 2px;
+            height: 18px;
+            margin-left: 2px;
+            animation: blink 0.7s infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .send-button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 25px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 10px;
+            margin-left: auto;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .send-button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Media queries for responsiveness */
+        @media (max-width: 768px) {
+            .message-container {
+                width: 85%;
+                padding: 15px;
+            }
+            
+            .message-text {
+                font-size: 16px;
+            }
+            
+            .send-button {
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .message-container {
+                width: 90%;
+                padding: 12px;
+            }
+            
+            .message-text {
+                font-size: 15px;
+            }
+            
+            .send-button {
+                padding: 8px 16px;
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background image -->
+    <img class="bg-image" src="background 3.png" alt="Birthday Background">
+    
+    <div class="container">
+        <div class="message-container">
+            <div class="message-text" id="message">
+                <span id="typed-message"></span><span class="cursor"></span>
+            </div>
+            <button class="send-button" onclick="resetTyping()">Send</button>
+            
+            <audio id="bgMusic" class="hidden-audio" autoplay>
+                <source src="mixkit-typing-on-a-laptop-keyboard-2531.wav" type="audio/mpeg">
+            </audio>
+        </div>
+    </div>
+
+    <script>
+        // The message to type
+        const fullMessage = "Selamat ulang tahun, Fadlan! 🎉\n Semoga di tahun ini kamu makin bahagia, semakin sukses, dan segala impian kamu tercapai!\nDan semoga yang belum tersemogakan dapat tersemogakan aminnn 🎉🎂🎈";
+        
+        // Current position in the message
+        let currentCharIndex = 0;
+        let typingInterval;
+        let typingSpeed = 70; // milliseconds per character
+        
+        // Start typing when the page loads
+        window.onload = function() {
+            startTyping();
+            
+            // Set audio to stop after 14 seconds
+            const audio = document.getElementById('bgMusic');
+            setTimeout(function() {
+                audio.pause();
+                audio.currentTime = 0;
+            }, 14000); // 14000 milliseconds = 14 seconds
+        };
+        
+        // Function to start the typing animation
+        function startTyping() {
+            const typedMessageElement = document.getElementById('typed-message');
+            currentCharIndex = 0;
+            typedMessageElement.innerHTML = '';
+            
+            // Type character by character
+            typingInterval = setInterval(function() {
+                if (currentCharIndex < fullMessage.length) {
+                    // Handle line breaks
+                    if (fullMessage[currentCharIndex] === '\n') {
+                        typedMessageElement.innerHTML += '<br>';
+                    } else {
+                        typedMessageElement.innerHTML += fullMessage[currentCharIndex];
+                    }
+                    currentCharIndex++;
+                } else {
+                    clearInterval(typingInterval);
+                }
+            }, typingSpeed);
+        }
+        
+        // Reset and restart typing
+        function resetTyping() {
+            setTimeout(function() {
+                // Navigate to 'massage.html'
+                window.location.href = 'foto.html';
+            }, 1500); // 1.5 second delay before navigation
+        }
+    </script>
+</body>
+</html>
